@@ -1,66 +1,22 @@
-# 🌤️ Weather App
+# Weather App
 
-A Flutter app that fetches real-time weather data based on city name or current location, displaying temperature, weather conditions, and forecasts with a clean UI.
+A small Flutter app that shows the current city, temperature and weather condition. It uses the device location to find a city, then requests current conditions from WeatherAPI.
 
-## 📸 Screenshots
+## Run locally
 
-<img width="1262" height="682" alt="image" src="https://github.com/user-attachments/assets/feb09539-8818-41b4-bc24-0643b1d504f4" />
+You need Flutter, a WeatherAPI key and a device with location support. Set your own key in the `WeatherService` constructor in `lib/pages/weather_page.dart`, then run:
 
-
-## ✨ Features
-
-- Search weather by city name
-- Real-time temperature and weather conditions
-- Weather forecast display
-- Clean and responsive UI
-
-## 🛠️ Tech Stack
-
-- **Flutter** — cross-platform mobile framework
-- **Dart** — programming language
-- **WeatherAPI** (`api.weatherapi.com`) — live weather data
-- **HTTP package** — REST API requests
-- **Async/Await** — asynchronous data fetching
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Flutter SDK installed
-- A free API key from [weatherapi.com](https://www.weatherapi.com)
-
-### Setup
-
-1. Clone the repo
-```bash
-   git clone https://github.com/dev-muhammetaly/weather_app.git
-   cd weather_app
+```sh
+flutter pub get
+flutter run
 ```
 
-2. Install dependencies
-```bash
-   flutter pub get
-```
+Allow location access when prompted. The app needs an internet connection.
 
-3. Add your API key — open the API config file and replace the placeholder:
-```dart
-   const apiKey = 'YOUR_API_KEY_HERE';
-```
+## Current scope
 
-4. Run the app
-```bash
-   flutter run
-```
+This version shows current conditions, not a multi-day forecast or city-search interface. The location lookup can fall back to London when reverse geocoding fails.
 
-## 📦 Dependencies
+Error feedback is still basic: a failed request can leave the loading indicator visible. The service currently uses an HTTP endpoint, which can cause problems on platforms that require HTTPS.
 
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  http: ^1.0.0
-```
-
-## 👨‍💻 Author
-
-**Muhammetaly Annageldiyew**  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhammetaly-annageldiyew-497608351)
+The request and location lookup are in `lib/service/weather_service.dart`.
